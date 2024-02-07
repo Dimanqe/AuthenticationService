@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace AuthenticationService.Controllers
 {
+    [ExceptionHandler]
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -49,7 +50,7 @@ namespace AuthenticationService.Controllers
         //    return _userRepository.GetAll();
         //}
 
-        [Authorize]
+        [Authorize(Roles ="Администратор")]
         [HttpGet]
         [Route("viewmodel")]
         public UserViewModel GetUserViewModel()
@@ -88,7 +89,8 @@ namespace AuthenticationService.Controllers
 
             var claims = new List<Claim> {
 
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name)
             };
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(
                 claims, 

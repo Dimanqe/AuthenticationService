@@ -7,40 +7,54 @@ namespace AuthenticationService
 {
     public class UserRepository : IUserRepository
     {
+
+        private readonly List<User> _users = new List<User>();
+
+        public UserRepository()
+        {
+            _users.Add(new User()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "Иван",
+                LastName = "Иванов",
+                Email = "ivan@gmail.com",
+                Password = "11111122222qq",
+                Login = "ivanov",
+                Role = new Role() { Id = 1, Name = "Пользователь" }
+            });
+
+            _users.Add(new User()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "Максим",
+                LastName = "Максимов",
+                Email = "maksim@gmail.com",
+                Password = "11",
+                Login = "maxim",
+                Role = new Role() { Id = 2, Name = "Администратор" }
+            });
+
+            _users.Add(new User()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "Антон",
+                LastName = "Антонов",
+                Email = "anton@gmail.com",
+                Password = "111zzxc1",
+                Login = "anton",
+                Role = new Role() { Id = 1, Name = "Пользователь" }
+            });
+        }
+
         public IEnumerable<User> GetAll()
         {
-
-            IEnumerable<User> users = new List<User>() 
-            {
-            new User(){FirstName="Alex", Email="alex@mail.com", Id = Guid.NewGuid(), LastName = "Petrov", Login="alex", Password="6s5da4fs6d5fs6af"},
-            new User(){FirstName="John", Email="john@mail.com", Id = Guid.NewGuid(), LastName = "Ruska", Login="john", Password = "5465s4d4cfvxcvds"},
-            new User(){FirstName="Mike", Email="mike@mail.com", Id = Guid.NewGuid(), LastName = "Salt", Login="mike", Password = "123324tefsrasfds"} 
-            };
-            return users;
-
+            return _users;
         }
 
         public User GetByLogin(string login)
         {
-            IEnumerable<User> users = GetAll();
-
-            
-            foreach (User user in users)
-            {
-                //if (user.Login == login)
-                //{
-                //    return user;
-                if(user==users.FirstOrDefault(user => user.Login == login))
-                {
-                    return user;
-                };
-
-            }
-            return null;
-
-
-
-
+            return _users.FirstOrDefault(v => v.Login == login);
         }
+
     }
 }

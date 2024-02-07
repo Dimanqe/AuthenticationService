@@ -35,7 +35,7 @@ namespace AuthenticationService
             services.AddSingleton(mapper);
 
             services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddScoped<ILogger, Logger>();
+            services.AddTransient<ILogger, Logger>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -73,6 +73,7 @@ namespace AuthenticationService
                 endpoints.MapControllers();
             });
 
+            app.UseLogMiddleware();
         }
     }
 }
