@@ -1,3 +1,5 @@
+using AuthenticationService.BLL;
+using AuthenticationService.DAL;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;

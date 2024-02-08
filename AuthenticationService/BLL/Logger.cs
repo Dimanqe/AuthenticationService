@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AuthenticationService
+namespace AuthenticationService.BLL
 {
     public class Logger : ILogger
     {

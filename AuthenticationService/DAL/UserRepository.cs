@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AuthenticationService
+namespace AuthenticationService.DAL
 {
     public class UserRepository : IUserRepository
     {

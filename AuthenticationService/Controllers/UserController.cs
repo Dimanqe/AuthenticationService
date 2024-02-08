@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using AuthenticationService.BLL;
+using AuthenticationService.DAL;
+using AuthenticationService.PLL;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
